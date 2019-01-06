@@ -36,11 +36,11 @@ int next(int min, int max) => min + Random().nextInt(max - min);
 
 class FlxState extends State<Flx> with SingleTickerProviderStateMixin{
 
-  final Iterable<Duration> pauses = [
-    const Duration(milliseconds: 500),
-    const Duration(milliseconds: 1000),
-    const Duration(milliseconds: 500),
-  ];
+    final Iterable<Duration> pauses = [
+      const Duration(milliseconds: 500),
+      const Duration(milliseconds: 1000),
+      const Duration(milliseconds: 500),
+    ];
 
   Animation<double> _fontSizeAnimation;
   AnimationController _fontSizeController; 
