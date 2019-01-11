@@ -137,16 +137,19 @@ class VibrationModeState extends State<VibrationMode> with SingleTickerProviderS
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            SizedBox(
-              height: 350.0,
-              width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  _buildScreen(),
-                ],
-              ),
-            )
+              Hero(
+                tag: "HeroModeIcon1",
+                child: Icon(Icons.vibration,color: Colors.white,size: 60,),),
+              SizedBox(
+                height: 350.0,
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _buildScreen(),
+                  ],
+                ),
+              )
             ],
           )
         )

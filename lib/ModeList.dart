@@ -35,6 +35,7 @@ class ModePageState extends State<ModePage> {
       Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=> new SoundMode()));
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,7 +52,7 @@ class ModePageState extends State<ModePage> {
                   itemCount: title.length,
                   controller: PageController(viewportFraction: 0.8),
                   itemBuilder: (BuildContext context, int itemIndex) {
-                    return _buildCarouselItem(context, itemIndex);
+                    return _buildModeCard(context, itemIndex);
                   },
                 ),
               )
@@ -61,7 +62,7 @@ class ModePageState extends State<ModePage> {
     );
   }
 
-  Widget _buildCarouselItem(BuildContext context, int itemIndex) {
+  Widget _buildModeCard(BuildContext context, int itemIndex) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: InkWell(
@@ -74,8 +75,13 @@ class ModePageState extends State<ModePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Text(title[itemIndex], style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 30) ,),
-                Icon(icons[itemIndex],color: Colors.white,size: 60,)
+                Text(title[itemIndex], style: TextStyle(color: Colors.white, 
+                fontWeight: FontWeight.bold,fontSize: 30) ,),
+                Hero(
+                  tag: "HeroModeIcon$itemIndex",
+                  child: Icon(icons[itemIndex],color: Colors.white,size: 60,),
+                )
+                
               ],
             ),
           ),

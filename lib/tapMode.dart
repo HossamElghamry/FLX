@@ -115,7 +115,7 @@ class TapModeState extends State<TapMode> with SingleTickerProviderStateMixin{
         fontSize: 50.0, fontWeight: FontWeight.bold));
     }
     else if (screen == "Early"){
-      return Text("Cheater!\nYou Pressed Early!",textAlign: TextAlign.center, 
+      return Text("Cheater!\n\nYou Pressed Early!",textAlign: TextAlign.center, 
       style: new TextStyle(color: Colors.white, 
       fontSize: 30.0, fontWeight: FontWeight.bold));
     }
@@ -136,16 +136,19 @@ class TapModeState extends State<TapMode> with SingleTickerProviderStateMixin{
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            SizedBox(
-              height: 350.0,
-              width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  _buildScreen(),
-                ],
-              ),
-            )
+              Hero(
+                tag: "HeroModeIcon0",
+                child: Icon(Icons.touch_app,color: Colors.white,size: 60,),),
+              SizedBox(
+                height: 350.0,
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _buildScreen(),
+                  ],
+                ),
+              )
             ],
           )
         )

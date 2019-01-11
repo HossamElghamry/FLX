@@ -140,16 +140,19 @@ class SoundModeState extends State<SoundMode> with SingleTickerProviderStateMixi
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            SizedBox(
-              height: 350.0,
-              width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  _buildScreen(),
-                ],
-              ),
-            )
+              Hero(
+                tag: "HeroModeIcon2",
+                child: Icon(Icons.surround_sound,color: Colors.white,size: 60,),),
+              SizedBox(
+                height: 350.0,
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _buildScreen(),
+                  ],
+                ),
+              )
             ],
           )
         )
