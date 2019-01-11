@@ -6,8 +6,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import './ModeList.dart';
 import 'package:audioplayers/audio_cache.dart';
 
-
 const alarmAudioPath = "Beep.mp3";
+
 GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: [
     'email',

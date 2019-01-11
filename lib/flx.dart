@@ -8,6 +8,8 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:vibrate/vibrate.dart';
 import './ModeList.dart';
 
+const alarmAudioPath = "Beep.mp3";
+
 GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: [
     'email',
@@ -29,24 +31,82 @@ class Flx extends StatefulWidget{
 }
 
 class FlxState extends State<Flx> with SingleTickerProviderStateMixin{
+  static final AudioCache player = new AudioCache();
 
-  void _dialogHTP(){
+  void _howtoTap(){
     showDialog(context: context, 
     builder: (_)=> AlertDialog(
-          title: new Text("How to Play"),
-          content: new Text("Wait for green screen to pop up\n\nTap immediately after seeing it\nto measure your response time!\n"
-          ,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),),
+          title: new Column(
+            children: <Widget>[
+              Text("How to Play\n",textAlign: TextAlign.center,),
+              Text("Tap Mode",textAlign: TextAlign.center,style: TextStyle(fontSize: 25),),
+              Icon(Icons.touch_app,size: 30,),
+            ],
+          ),
+          content: new Text("Wait for green screen to pop up\n\nTap immediately after seeing it\nto measure your reflex time!\n"
+          ,textAlign: TextAlign.center, style: TextStyle(fontSize: 15),),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("Close"),
+              onPressed: () {Navigator.of(context).pop();},
+            ),
+          ],
         )   
       );
-    }
-  
-  void _toTap(){
-  }
-  void _toSound(){
-  }
-  void _toVibrate(){
   }
 
+  void _howtoVibrate(){
+    showDialog(context: context, 
+    builder: (_)=> AlertDialog(
+          title: new Column(
+            children: <Widget>[
+              Text("How to Play\n",textAlign: TextAlign.center,),
+              Text("Vibration Mode",textAlign: TextAlign.center,style: TextStyle(fontSize: 25),),
+              Icon(Icons.vibration,size: 30,),
+            ],
+          ),
+          content: Text("Wait for your phone to vibrate\n\nTap immediately after sensing it\nto measure your reflex time!\n"
+          ,textAlign: TextAlign.center,style: TextStyle(fontSize: 15),),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("Test Vibration"),
+              onPressed: () {Vibrate.feedback(FeedbackType.medium);},
+            ),
+            FlatButton(
+              child: Text("Close"),
+              onPressed: () {Navigator.of(context).pop();},
+            ),
+          ],
+        )   
+      );
+  }
+
+  void _howtoSound(){
+    showDialog(context: context, 
+    builder: (_)=> AlertDialog(
+          title: Column(
+            children: <Widget>[
+              Text("How to Play\n",textAlign: TextAlign.center,),
+              Text("Sound Mode",textAlign: TextAlign.center,style: TextStyle(fontSize: 25),),
+              Icon(Icons.surround_sound,size: 30,),
+            ],
+          ),
+          content: Text("Wait for the sound to play\n\nTap immediately after hearing it\nto measure your reflex time!\n"
+          ,textAlign: TextAlign.center, style: TextStyle(fontSize: 15),),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("Test Sound"),
+              onPressed: () {player.play(alarmAudioPath);},
+            ),
+            FlatButton(
+              child: Text("Close"),
+              onPressed: () {Navigator.of(context).pop();},
+            ),
+          ],
+        )   
+      );
+  }
+  
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(title: Text("FLEX"),),
@@ -57,18 +117,19 @@ class FlxState extends State<Flx> with SingleTickerProviderStateMixin{
               accountName: Text("Hossam Elghamry"),
               accountEmail: Text("h.elghamry@nu.edu.eg"),
             ),
-            ListTile(title: Text("About Tap Mode"),trailing: Icon(Icons.touch_app),
-                      onTap:() => _toTap()),
-            ListTile(title: Text("About Sound Mode"),trailing: Icon(Icons.surround_sound),
-                      onTap:()=> _toSound()),
-            ListTile(title: Text("About Vibration Mode"),trailing: Icon(Icons.vibration),
-                      onTap:()=> _toVibrate()),
+            ListTile(title: Text("About Tap Mode"),
+                      trailing: Icon(Icons.touch_app),
+                      onTap:() => _howtoTap()),
+            ListTile(title: Text("About Vibration Mode"),
+                      trailing: Icon(Icons.vibration),
+                      onTap:()=> _howtoVibrate()),
+            ListTile(title: Text("About Sound Mode"),
+                     trailing: Icon(Icons.surround_sound),
+                     onTap:()=> _howtoSound(),),
             Divider(),
             ListTile(title: Text("Global Leaderboard"),trailing: Icon(Icons.first_page), 
-                     onTap:()=>Navigator.of(context).push(new MaterialPageRoute(builder: 
-                            (BuildContext context)=> new HighscoreList())) ,),
-
-            ListTile(title: Text("How to Play"),trailing: Icon(Icons.question_answer),onTap: ()=>_dialogHTP(),),
+                     onTap:()=>Navigator.of(context).push( MaterialPageRoute(builder: 
+                            (BuildContext context)=> HighscoreList())) ,),
             ListTile(title: Text("Settings"),trailing: Icon(Icons.settings),),
             ListTile(title: Text("About"),trailing: Icon(Icons.recent_actors),)
           ],
