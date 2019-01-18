@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:google_sign_in/google_sign_in.dart';
-import './ModeList.dart';
 import 'package:audioplayers/audio_cache.dart';
 
 const alarmAudioPath = "Beep.mp3";
@@ -111,7 +110,7 @@ class SoundModeState extends State<SoundMode> with SingleTickerProviderStateMixi
   Widget _buildScreen(){
      if (screen == "Flexing"){
         return Text("Tap when you hear the sound!", style: new TextStyle(color: Colors.white, 
-        fontSize: 25.0, fontWeight: FontWeight.bold));
+        fontSize: 22.0, fontWeight: FontWeight.bold));
      }
     else if (screen == "TapNow"){
         _stopwatch..start();
@@ -131,6 +130,12 @@ class SoundModeState extends State<SoundMode> with SingleTickerProviderStateMixi
     return Container();
   }
 
+  @override
+  void dispose(){
+    t.cancel();
+    super.dispose();
+  }
+  
   Widget build(BuildContext context){
     return new Material(
         color: _screenColor,

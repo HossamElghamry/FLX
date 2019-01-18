@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:google_sign_in/google_sign_in.dart';
-import './ModeList.dart';
 import 'package:vibrate/vibrate.dart';
 
 
@@ -108,7 +107,7 @@ class VibrationModeState extends State<VibrationMode> with SingleTickerProviderS
   Widget _buildScreen(){
      if (screen == "Flexing"){
         return Text("Tap when the phone vibrates!", style: new TextStyle(color: Colors.white, 
-        fontSize: 25.0, fontWeight: FontWeight.bold));
+        fontSize: 22.0, fontWeight: FontWeight.bold));
      }
     else if (screen == "TapNow"){
         _stopwatch..start();
@@ -126,6 +125,12 @@ class VibrationModeState extends State<VibrationMode> with SingleTickerProviderS
       style: new TextStyle(color: Colors.white, fontSize: 35.0, fontWeight: FontWeight.bold));
     }
     return Container();
+  }
+  
+  @override
+  void dispose(){
+    t.cancel();
+    super.dispose();
   }
 
   Widget build(BuildContext context){

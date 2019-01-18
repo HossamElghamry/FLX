@@ -65,28 +65,29 @@ class ModePageState extends State<ModePage> {
   Widget _buildModeCard(BuildContext context, int itemIndex) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: InkWell(
-        onTap: ()=> _managePages(title[itemIndex]),
-        highlightColor: Colors.white,
-        splashColor: Colors.purple,
-        child:Card(
-          color:Colors.purple[300],
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Text(title[itemIndex], style: TextStyle(color: Colors.white, 
-                fontWeight: FontWeight.bold,fontSize: 30) ,),
-                Hero(
-                  tag: "HeroModeIcon$itemIndex",
-                  child: Icon(icons[itemIndex],color: Colors.white,size: 60,),
-                )
-                
-              ],
+      child: Card(
+        child: InkWell(
+          onTap: ()=> _managePages(title[itemIndex]),
+          highlightColor: Colors.white,
+          splashColor: Colors.purple,
+          child:Card(
+            color:Colors.purple[300],
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text(title[itemIndex], style: TextStyle(color: Colors.white, 
+                  fontWeight: FontWeight.bold,fontSize: 30) ,),
+                  Hero(
+                    tag: "HeroModeIcon$itemIndex",
+                    child: Icon(icons[itemIndex],color: Colors.white,size: 60,),
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      )
+        )
+      ),
     );
   }
 }

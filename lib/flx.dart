@@ -43,7 +43,7 @@ class FlxState extends State<Flx> with SingleTickerProviderStateMixin{
               Icon(Icons.touch_app,size: 30,),
             ],
           ),
-          content: new Text("Wait for green screen to pop up\n\nTap immediately after seeing it\nto measure your reflex time!\n"
+          content: new Text("Wait for green screen to pop up\n\nTap immediately after seeing it to measure your reflex time!\n"
           ,textAlign: TextAlign.center, style: TextStyle(fontSize: 15),),
           actions: <Widget>[
             FlatButton(
@@ -65,7 +65,7 @@ class FlxState extends State<Flx> with SingleTickerProviderStateMixin{
               Icon(Icons.vibration,size: 30,),
             ],
           ),
-          content: Text("Wait for your phone to vibrate\n\nTap immediately after sensing it\nto measure your reflex time!\n"
+          content: Text("Wait for your phone to vibrate\n\nTap immediately after sensing it to measure your reflex time!\n"
           ,textAlign: TextAlign.center,style: TextStyle(fontSize: 15),),
           actions: <Widget>[
             FlatButton(
@@ -91,7 +91,7 @@ class FlxState extends State<Flx> with SingleTickerProviderStateMixin{
               Icon(Icons.surround_sound,size: 30,),
             ],
           ),
-          content: Text("Wait for the sound to play\n\nTap immediately after hearing it\nto measure your reflex time!\n"
+          content: Text("Wait for the sound to play\n\nTap immediately after hearing it to measure your reflex time!\n"
           ,textAlign: TextAlign.center, style: TextStyle(fontSize: 15),),
           actions: <Widget>[
             FlatButton(
@@ -109,7 +109,8 @@ class FlxState extends State<Flx> with SingleTickerProviderStateMixin{
   
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: Text("FLEX"),),
+      appBar: AppBar(title: Text("FLEX",), centerTitle: true ,
+      elevation: 0.0, backgroundColor: Colors.deepPurpleAccent,),
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
@@ -137,6 +138,7 @@ class FlxState extends State<Flx> with SingleTickerProviderStateMixin{
       ),
 
       body: ModePage(),
+      
     );
   }
 }

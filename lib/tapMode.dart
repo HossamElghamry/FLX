@@ -3,8 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:google_sign_in/google_sign_in.dart';
-import './ModeList.dart';
-
 
 GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: [
@@ -107,7 +105,7 @@ class TapModeState extends State<TapMode> with SingleTickerProviderStateMixin{
   Widget _buildScreen(){
      if (screen == "Flexing"){
         return Text("Tap when the screen turns green!", style: new TextStyle(color: Colors.white, 
-        fontSize: 21.0, fontWeight: FontWeight.bold));
+        fontSize: 19.0, fontWeight: FontWeight.bold));
      }
     else if (screen == "TapNow"){
         _stopwatch..start();
@@ -125,6 +123,12 @@ class TapModeState extends State<TapMode> with SingleTickerProviderStateMixin{
       style: new TextStyle(color: Colors.white, fontSize: 35.0, fontWeight: FontWeight.bold));
     }
     return Container();
+  }
+
+  @override
+  void dispose(){
+    t.cancel();
+    super.dispose();
   }
 
   Widget build(BuildContext context){
