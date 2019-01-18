@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "351790093310",
+    "firebase_url": "https://flex-a630b.firebaseio.com",
+    "project_id": "flex-a630b",
+    "storage_bucket": "flex-a630b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351790093310:android:73bdcd6dfef986e2",
+        "android_client_info": {
+          "package_name": "com.company.flex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351790093310-n2eh0jpndh03qnknp24qdlab286dq24l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.flex",
+            "certificate_hash": "c1acd1b705e9294815425e4200edcdf73fbdf968"
+          }
+        },
+        {
+          "client_id": "351790093310-nn137rlva0jckqi53l1mtcjfo2q19opl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtgooLmEpwGzq77lIoI-kPvLWiYO5VQSw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351790093310-nn137rlva0jckqi53l1mtcjfo2q19opl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
