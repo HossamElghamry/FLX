@@ -1,4 +1,4 @@
-# flx
+# Flex
 
 A new Flutter project.
 
