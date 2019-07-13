@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flx/src/models/modes.dart';
 import 'package:flx/src/ui/play_screen/play_screen.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 class MainMenu extends StatefulWidget {
   @override
@@ -26,23 +27,32 @@ class _MainMenuState extends State<MainMenu> {
           "FLX",
           style: TextStyle(
             color: Colors.white,
-            fontSize: 22,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
       ),
       body: Center(
-        child: Container(
-          height: itemHeight,
-          child: PageView(
-            controller: viewController,
-            children: [
-              ModeCard(Modes.Visual),
-              ModeCard(Modes.Vibrate),
-              ModeCard(Modes.Sound),
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Text(
+              "Test your Reflexes",
+              style: TextStyle(color: Colors.white, fontSize: 28),
+            ),
+            Container(
+              height: itemHeight,
+              child: PageView(
+                controller: viewController,
+                children: [
+                  ModeCard(Modes.Visual),
+                  ModeCard(Modes.Vibrate),
+                  ModeCard(Modes.Sound),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -54,28 +64,33 @@ class _MainMenuState extends State<MainMenu> {
   }
 }
 
-class ModeCard extends StatelessWidget {
+class ModeCard extends StatefulWidget {
   Modes mode;
   String modeName;
-  IconData modeIcon;
+  String animationPath;
 
   ModeCard(this.mode) {
     switch (mode) {
       case Modes.Visual:
         modeName = "Visual Mode";
-        modeIcon = Icons.touch_app;
+        animationPath = "assets/animations/tap_animation.flr";
         break;
       case Modes.Vibrate:
         modeName = "Vibrate Mode";
-        modeIcon = Icons.vibration;
+        animationPath = "assets/animations/vibrate_animation.flr";
         break;
       case Modes.Sound:
         modeName = "Sound Mode";
-        modeIcon = Icons.surround_sound;
+        animationPath = "assets/animations/sound_animation.flr";
         break;
     }
   }
 
+  @override
+  _ModeCardState createState() => _ModeCardState();
+}
+
+class _ModeCardState extends State<ModeCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -89,7 +104,7 @@ class ModeCard extends StatelessWidget {
           ),
           child: InkWell(
             onTap: () {
-              if (mode == Modes.Visual) {
+              if (widget.mode == Modes.Visual) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -98,7 +113,7 @@ class ModeCard extends StatelessWidget {
                         ),
                   ),
                 );
-              } else if (mode == Modes.Vibrate) {
+              } else if (widget.mode == Modes.Vibrate) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -124,17 +139,23 @@ class ModeCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Text(
-                    modeName,
+                    widget.modeName,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                    ),
                   ),
-                  Icon(
-                    modeIcon,
-                    color: Colors.white,
-                    size: 120,
+                  Container(
+                    height: 300,
+                    child: FlareActor(
+                      widget.animationPath,
+                      color: Colors.white,
+                      alignment: Alignment.center,
+                      fit: BoxFit.contain,
+                      animation: "animate",
+                    ),
                   ),
                 ],
               ),

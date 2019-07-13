@@ -28,7 +28,7 @@ dependencies:
   #shared_preferences: 0.5.2
   vibration: 1.1.0
   audioplayers: ^0.7.8
-
+  flare_flutter: ^1.5.4
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +49,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - assets/sound/Beep.mp3
-  #  - images/a_dot_ham.jpeg
+   - assets/animations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
