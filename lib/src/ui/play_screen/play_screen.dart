@@ -54,7 +54,6 @@ class _PlayScreenState extends State<PlayScreen> {
                 300 //Compensating audio delay (half a second)
             : snapshot.data.value;
         playScreenInfoSet(state, widget.mode);
-
         return GestureDetector(
           onTap: () {
             if (_timer.isActive) {
