@@ -10,6 +10,7 @@ class Highscore {
   });
 
   String get getModeString => mode.toString().substring(6);
+  double get getTimeinSeconds => time / 1000;
   Modes get getMode => mode;
   double get getTime => time;
 

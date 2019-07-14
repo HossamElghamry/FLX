@@ -58,8 +58,10 @@ class _PlayScreenState extends State<PlayScreen> {
             ? snapshot.data.value - 300 //Compensating audio delay (300 ms)
             : snapshot.data.value;
 
-        globalBloc
-            .checkHighscore(Highscore(mode: widget.mode, time: resultTime));
+        if (state == PlayState.Results) {
+          globalBloc
+              .checkHighscore(Highscore(mode: widget.mode, time: resultTime));
+        }
 
         playScreenInfoSet(state, widget.mode);
         return GestureDetector(

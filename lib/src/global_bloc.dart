@@ -27,7 +27,7 @@ class GlobalBloc {
         .time;
     double newTime = highscore.time;
 
-    if (oldTime > newTime || oldTime == 0) {
+    if (oldTime > newTime || oldTime <= 0) {
       var blocList = _highscore$.value;
       blocList.removeWhere((temp) => temp.getMode == highscore.getMode);
       blocList.add(highscore);
