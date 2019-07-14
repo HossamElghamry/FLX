@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flx/src/global_bloc.dart';
+import 'package:flx/src/models/highscore.dart';
 import 'package:flx/src/models/modes.dart';
 import 'package:flx/src/ui/play_screen/play_screen.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:provider/provider.dart';
 
 class MainMenu extends StatefulWidget {
   @override
@@ -14,8 +17,9 @@ class _MainMenuState extends State<MainMenu> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    //final GlobalBloc globalBloc = Provider.of<GlobalBloc>(context);
 
+    var size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 24) - 120;
 
     return Scaffold(

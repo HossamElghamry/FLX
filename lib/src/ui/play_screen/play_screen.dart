@@ -1,9 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flx/src/global_bloc.dart';
+import 'package:flx/src/models/highscore.dart';
 import 'package:flx/src/models/modes.dart';
 import 'package:flx/src/models/play_state.dart';
 import 'package:flx/src/ui/play_screen/play_screen_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'dart:async';
 import 'package:vibration/vibration.dart';
@@ -38,6 +41,8 @@ class _PlayScreenState extends State<PlayScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalBloc globalBloc = Provider.of<GlobalBloc>(context);
+
     return StreamBuilder<MapEntry<PlayState, double>>(
       stream: Observable.combineLatest2(
         playBloc.playState$,
@@ -50,9 +55,12 @@ class _PlayScreenState extends State<PlayScreen> {
         }
         final state = snapshot.data.key;
         final resultTime = (widget.mode == Modes.Sound)
-            ? snapshot.data.value -
-                300 //Compensating audio delay (half a second)
+            ? snapshot.data.value - 300 //Compensating audio delay (300 ms)
             : snapshot.data.value;
+
+        globalBloc
+            .checkHighscore(Highscore(mode: widget.mode, time: resultTime));
+
         playScreenInfoSet(state, widget.mode);
         return GestureDetector(
           onTap: () {
