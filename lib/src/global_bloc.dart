@@ -28,21 +28,41 @@ class GlobalBloc {
     double newTime = highscore.time;
 
     if (oldTime > newTime || oldTime <= 0) {
+      print("jjgsss");
       var blocList = _highscore$.value;
       blocList.removeWhere((temp) => temp.getMode == highscore.getMode);
-      blocList.add(highscore);
-      _highscore$.add(blocList);
-      Map<String, dynamic> tempMap = highscore.toJson();
+
       SharedPreferences sharedUser = await SharedPreferences.getInstance();
+      Map<String, dynamic> tempMap = highscore.toJson();
       String newHighscoreJson = jsonEncode(tempMap);
       List<String> highscoreJsonList = [];
+      print(sharedUser.getStringList('highscores'));
       if (sharedUser.getStringList('highscores') == null) {
         highscoreJsonList.add(newHighscoreJson);
+        for (int i = 0; i < 2; i++) {
+          String unchangedHighscoreJson = jsonEncode(blocList[i].toJson());
+          highscoreJsonList.add(unchangedHighscoreJson);
+        }
       } else {
-        highscoreJsonList = sharedUser.getStringList('highscores');
+        List<String> prefBeforeDecodeList =
+            sharedUser.getStringList('highscores');
+        List<Highscore> prefList = [];
+        for (String jsonHighscore in prefBeforeDecodeList) {
+          Map userMap = jsonDecode(jsonHighscore);
+          Highscore tempHighscore = Highscore.fromJson(userMap);
+          if (tempHighscore.mode != highscore.mode) {
+            prefList.add(tempHighscore);
+          }
+        }
+        for (int i = 0; i < 2; i++) {
+          String unchangedHighscoreJson = jsonEncode(prefList[i].toJson());
+          highscoreJsonList.add(unchangedHighscoreJson);
+        }
         highscoreJsonList.add(newHighscoreJson);
       }
       sharedUser.setStringList('highscores', highscoreJsonList);
+      blocList.add(highscore);
+      _highscore$.add(blocList);
     }
   }
 
@@ -51,8 +71,10 @@ class GlobalBloc {
     List<String> jsonList = sharedUser.getStringList('highscores');
     List<Highscore> prefList = [];
     if (jsonList == null) {
+      print("hujef");
       return;
     } else {
+      print("DJBJKD");
       for (String jsonHighscore in jsonList) {
         Map userMap = jsonDecode(jsonHighscore);
         Highscore tempHighscore = Highscore.fromJson(userMap);
