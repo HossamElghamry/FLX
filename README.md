@@ -1,16 +1,36 @@
-# flx
+<h1 align="center">FLX</h1>
 
-A new Flutter project.
+<div align="center">
+  <strong>Test your Reflexes!</strong>
+</div>
+<div align="center">
+  A simple mobile game built with Flutter, Provider and BLoC pattern
+</div>
 
-## Getting Started
+## Key Features
+* __Three different play modes!__ 
+  * __Visual mode:__ tap when the screen color changes to green
+  * __Vibrate mode:__ tap when your phone vibrates
+  * __Sound mode:__ tap when you hear a laser sound
+* __Beat your highscore, get better!__ 
+  * Highscore system, accessible through homepage's drawer
+  * Highscore time measured in seconds for each mode individually
+* __Saving your highscore for later plays!__ 
+  * Storing highscore objects in shared preference
+  * Highscore list retrieval upon application launch
+  * JSON encoding and decoding
+* __Beautiful animations!__ 
+  * Dedicated Flare animations for each game mode
+  * Dedicated Flare animation for personal stats
 
-This project is a starting point for a Flutter application.
+<div align="center">
+<img src="gif/FLX.gif" width="250"> 
+</div>
 
-A few resources to get you started if this is your first Flutter project:
+## Features to be Implemented
+* __Online rankings for each mode__ 
+* __Competitive mode__
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+
+
